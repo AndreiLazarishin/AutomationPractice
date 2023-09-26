@@ -1,4 +1,8 @@
 class StartPageConsts:
+    # IFRAME =
+    CLOSE_ADS_XPATH = './/div[@role="button"]'
+    SEND_FEEDBACK_XPATH = './/span[text()="Send feedback"]'
+    NOT_INTERESTED_XPATH = './/span[text()="Not interested in this ad"]'
     ELEMENTS_CARD_XPATH = './/div[h5[text()="Elements"]]'
     FORMS_CARD_XPATH = './/div[h5[text()="Forms"]]'
     ALERTS_FRAMES_WINDOWS_CARD_XPATH = './/div[h5[text()="Alerts, Frame & Windows"]]'

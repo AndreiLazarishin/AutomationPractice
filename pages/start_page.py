@@ -10,8 +10,15 @@ class StartPage(BasePage):
         super().__init__(driver)
         self.constants = StartPageConsts
 
+    def close_google_ads(self):
+        """Close the Google Ads"""
+        self.click(xpath=self.constants.CLOSE_ADS_XPATH)
+        self.click(xpath=self.constants.SEND_FEEDBACK_XPATH)
+        self.click(xpath=self.constants.NOT_INTERESTED_XPATH)
+
     def open_elements_tree(self):
         """Open the Elements tree"""
+        self.close_google_ads()
         self.click(xpath=self.constants.ELEMENTS_CARD_XPATH)
 
     def open_text_box_section(self):
