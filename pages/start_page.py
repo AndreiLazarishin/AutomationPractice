@@ -12,9 +12,16 @@ class StartPage(BasePage):
 
     def close_google_ads(self):
         """Close the Google Ads"""
-        self.click(xpath=self.constants.CLOSE_ADS_XPATH)
-        self.click(xpath=self.constants.SEND_FEEDBACK_XPATH)
-        self.click(xpath=self.constants.NOT_INTERESTED_XPATH)
+        # from time import sleep
+        # sleep(5)
+        self.click(self.constants.TOOLS_QA_XPATH)
+        self.driver.execute_script("window.scrollTo(0, 120)")
+        # self.driver.refresh()
+        # self.wait_until_clickable(xpath=self.constants.CLOSE_ADS_XPATH)
+        # # self.click(xpath=self.constants.CLOSE_ADS_XPATH)
+        # self.click(xpath=self.constants.SEND_FEEDBACK_XPATH)
+        # self.click(xpath=self.constants.NOT_INTERESTED_XPATH)
+        # self.driver.refresh()
 
     def open_elements_tree(self):
         """Open the Elements tree"""

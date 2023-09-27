@@ -10,7 +10,8 @@ def start_page():
     driver = webdriver.Chrome()
     driver.get(BASE_URL)
     driver.implicitly_wait(2)
-    driver.switch_to.default_content()
+    driver.maximize_window()
+    # driver.switch_to.default_content()
     yield StartPage(driver)
     driver.close()
 
