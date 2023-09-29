@@ -47,3 +47,5 @@ class StartPageConsts:
     WORD_FILE_XPATH = './/*[text()="Word File.doc"]'
     EXCEL_FILE_XPATH = './/*[text()="Excel File.doc"]'
     RESULT_XPATH = './/div[@id="result"]'
+    # Radio Button Consts
+    RADIO_BUTTON_SECTION_XPATH = './/span[text()="Radio Button"]'

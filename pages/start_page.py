@@ -12,16 +12,8 @@ class StartPage(BasePage):
 
     def close_google_ads(self):
         """Close the Google Ads"""
-        # from time import sleep
-        # sleep(5)
         self.click(self.constants.TOOLS_QA_XPATH)
         self.driver.execute_script("window.scrollTo(0, 120)")
-        # self.driver.refresh()
-        # self.wait_until_clickable(xpath=self.constants.CLOSE_ADS_XPATH)
-        # # self.click(xpath=self.constants.CLOSE_ADS_XPATH)
-        # self.click(xpath=self.constants.SEND_FEEDBACK_XPATH)
-        # self.click(xpath=self.constants.NOT_INTERESTED_XPATH)
-        # self.driver.refresh()
 
     def open_elements_tree(self):
         """Open the Elements tree"""
@@ -34,12 +26,14 @@ class StartPage(BasePage):
         self.click(xpath=self.constants.TEXT_BOX_SECTION_XPATH)
 
     def open_check_box_section(self):
+        """Open the Check box section"""
         self.open_elements_tree()
         self.click(xpath=self.constants.CHECK_BOX_SECTION_XPATH)
 
     @log_decorator
     def fill_text_box(self, text_box):
         """Fill the input fields"""
+        self.driver.execute_script("window.scrollTo(0, 120)")
         self.fill_field(xpath=self.constants.TEXT_BOX_FULL_NAME_XPATH, value=text_box.full_name)
         self.fill_field(xpath=self.constants.EMAIL_INPUT_FIELD_XPATH, value=text_box.email)
         self.fill_field(xpath=self.constants.CURRENT_ADDRESS_FIELD_XPATH, value=text_box.cur_address)
@@ -48,6 +42,7 @@ class StartPage(BasePage):
 
     @log_decorator
     def fill_email(self):
+        """Fill random str into email field"""
         self.fill_field(xpath=self.constants.EMAIL_INPUT_FIELD_XPATH, value=rand_str(8))
         self.click(xpath=self.constants.SUBMIT_BUTTON_XPATH)
 
@@ -65,25 +60,34 @@ class StartPage(BasePage):
         return StartPage(self.driver)
 
     @log_decorator
-    def expand_home_tree(self):
-        """Expand the Home tree"""
-        self.click(self.constants.HOME_EXPAND_XPATH)
-
-    @log_decorator
-    def expand_documents(self):
-        self.expand_home_tree()
-        self.click(self.constants.DOCUMENTS_EXPAND_XPATH)
-
-    @log_decorator
-    def expand_office(self):
-        self.expand_documents()
-        self.click(self.constants.OFFICE_EXPAND_XPATH)
+    def expand_whole_home_tree(self):
+        """Expand whole Home tree"""
+        self.click(self.constants.EXPAND_ALL_XPATH)
 
     @log_decorator
     def pick_public(self):
-        self.expand_office()
+        """Select Public"""
+        self.expand_whole_home_tree()
         self.click(self.constants.PUBLIC_XPATH)
 
     @log_decorator
     def check_public_selected(self):
+        """Verify that Public is Selected"""
         assert 'public' in self.get_element_text(xpath=self.constants.RESULT_XPATH)
+
+    @log_decorator
+    def pick_excel_file(self):
+        """Select Excel file"""
+        self.expand_whole_home_tree()
+        self.driver.execute_script("window.scrollTo(0, 240)")
+        self.click(self.constants.EXCEL_FILE_XPATH)
+
+    @log_decorator
+    def excel_file_selected(self):
+        """Verify that Excel file selected"""
+        assert 'excelFile' in self.get_element_text(xpath=self.constants.RESULT_XPATH)
+
+    def open_radio_button_section(self):
+        """Open the Radio Button section"""
+        self.open_elements_tree()
+        self.click(xpath=self.constants.CHECK_BOX_SECTION_XPATH)
