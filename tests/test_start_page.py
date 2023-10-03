@@ -22,9 +22,14 @@ class TestStartPage:
     def test_pick_documents_public_office_option(self, start_page):
         start_page.open_check_box_section()
         start_page.pick_public()
-        start_page.check_public_selected()
+        start_page.verify_public_selected()
 
     def test_pick_downloads_excel_file(self, start_page):
         start_page.open_check_box_section()
         start_page.pick_excel_file()
-        start_page.excel_file_selected()
+        start_page.verify_excel_file_selected()
+
+    def test_pick_impressive_radio(self, start_page):
+        start_page.open_radio_button_section()
+        start_page.pick_impressive_radio()
+        start_page.verify_impressive_button_selected()

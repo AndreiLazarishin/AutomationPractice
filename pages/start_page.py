@@ -71,7 +71,7 @@ class StartPage(BasePage):
         self.click(self.constants.PUBLIC_XPATH)
 
     @log_decorator
-    def check_public_selected(self):
+    def verify_public_selected(self):
         """Verify that Public is Selected"""
         assert 'public' in self.get_element_text(xpath=self.constants.RESULT_XPATH)
 
@@ -83,11 +83,26 @@ class StartPage(BasePage):
         self.click(self.constants.EXCEL_FILE_XPATH)
 
     @log_decorator
-    def excel_file_selected(self):
+    def verify_excel_file_selected(self):
         """Verify that Excel file selected"""
         assert 'excelFile' in self.get_element_text(xpath=self.constants.RESULT_XPATH)
 
+    @log_decorator
     def open_radio_button_section(self):
         """Open the Radio Button section"""
         self.open_elements_tree()
         self.click(xpath=self.constants.CHECK_BOX_SECTION_XPATH)
+
+    @log_decorator
+    def pick_impressive_radio(self):
+        """Pick Impressive radio button"""
+        self.click(self.constants.IMPRESSIVE_RADIO_BUTTON_XPATH)
+
+    @log_decorator
+    def verify_impressive_button_selected(self):
+        """Verify that Impressive button is selected"""
+        assert 'Impressive' in self.get_element_text(xpath=self.constants.SELECTED_RADIO_OPTION_XPATH)
+
+    @log_decorator
+    def verify_no_radio_button_disabled(self):
+        """Verify that No button is disabled"""

@@ -49,3 +49,6 @@ class StartPageConsts:
     RESULT_XPATH = './/div[@id="result"]'
     # Radio Button Consts
     RADIO_BUTTON_SECTION_XPATH = './/span[text()="Radio Button"]'
+    IMPRESSIVE_RADIO_BUTTON_XPATH = ".//*[@id='impressiveRadio']"
+    YES_RADIO_BUTTON_XPATH = ".//*[@id='yesRadio']"
+    SELECTED_RADIO_OPTION_XPATH = ".//p[@class='mt-3']"
