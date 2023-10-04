@@ -19,6 +19,11 @@ class BasePage:
         return self.waiter.until(method=expected_conditions.element_to_be_clickable((By.XPATH, xpath)),
                                  message=f"XPATH:  '{xpath}'  is not clickable or cannot be found")
 
+    def is_enabled(self, xpath, by=By.XPATH):
+        """Check that element is disabled (non-clickable)"""
+        element = self.driver.find_element(by=by, value=xpath)
+        return element.is_enabled()
+
     def is_exists(self, xpath, by=By.XPATH):
         """Check that element exists"""
         from selenium.common import NoSuchElementException

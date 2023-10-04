@@ -33,3 +33,7 @@ class TestStartPage:
         start_page.open_radio_button_section()
         start_page.pick_impressive_radio()
         start_page.verify_impressive_button_selected()
+
+    def test_verify_button_disabled(self, start_page):
+        start_page.open_radio_button_section()
+        start_page.verify_no_radio_button_disabled()

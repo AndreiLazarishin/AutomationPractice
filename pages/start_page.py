@@ -91,7 +91,7 @@ class StartPage(BasePage):
     def open_radio_button_section(self):
         """Open the Radio Button section"""
         self.open_elements_tree()
-        self.click(xpath=self.constants.CHECK_BOX_SECTION_XPATH)
+        self.click(xpath=self.constants.RADIO_BUTTON_SECTION_XPATH)
 
     @log_decorator
     def pick_impressive_radio(self):
@@ -106,3 +106,9 @@ class StartPage(BasePage):
     @log_decorator
     def verify_no_radio_button_disabled(self):
         """Verify that No button is disabled"""
+        assert self.is_enabled(self.constants.NO_RADIO_BUTTON_DISABLED_XPATH) is False
+
+    @log_decorator
+    def first_name_column_sorting(self):
+        """Sorting by First Name column"""
+        self.click()
