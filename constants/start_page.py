@@ -54,3 +54,12 @@ class StartPageConsts:
     NO_RADIO_BUTTON_DISABLED_XPATH = ".//*[@class='custom-control-input disabled']"
     SELECTED_RADIO_OPTION_XPATH = ".//p[@class='mt-3']"
     # Web Tables Consts
+    WEB_TABLES_SECTION_XPATH = './/span[text()="Web Tables"]'
+    ADD_NEW_RECORD_BUTTON_XPATH = './/button[@id="addNewRecordButton"]'
+    FIRST_NAME_FIELD_XPATH = './/input[@id="firstName"]'
+    LAST_NAME_FIELD_XPATH = './/input[@id="lastName"]'
+    EMAIL_FIELD_XPATH = './/input[@id="userEmail"]'
+    AGE_FIELD_XPATH = './/input[@id="age"]'
+    SALARY_FIELD_XPATH = './/input[@id="salary"]'
+    DEPARTMENT_FIELD_XPATH = './/input[@id="department"]'
+    WEB_TABLE_XPATH = './/div[@class="rt-tbody"]'

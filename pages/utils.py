@@ -25,6 +25,11 @@ def rand_str(stroke=14):
     return generate_str
 
 
+def rand_numb(numb=2):
+    generate_numb = ''.join([random.choice(string.digits) for _ in range(numb)])
+    return generate_numb
+
+
 def wait_until_ok(timeout=5, period=0.5):
     """Reties until OK"""
 
@@ -73,3 +78,23 @@ class TextBox:
         self.email = rand_email(8)
         self.cur_address = rand_str(11)
         self.per_address = rand_str(10)
+
+
+class WebTable:
+
+    def __init__(self, first_name='', last_name='', email='', age='', salary='', department=''):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.age = age
+        self.salary = salary
+        self.department = department
+
+    def fill_default(self):
+        """Fill fields using random data"""
+        self.first_name = rand_username(7)
+        self.last_name = rand_username(7)
+        self.email = rand_email(8)
+        self.age = rand_numb()
+        self.salary = rand_numb(6)
+        self.department = rand_str(9)

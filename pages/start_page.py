@@ -109,6 +109,26 @@ class StartPage(BasePage):
         assert self.is_enabled(self.constants.NO_RADIO_BUTTON_DISABLED_XPATH) is False
 
     @log_decorator
-    def first_name_column_sorting(self):
-        """Sorting by First Name column"""
-        self.click()
+    def open_web_tables_section(self):
+        """Open the web Tables section"""
+        self.open_elements_tree()
+        self.click(xpath=self.constants.WEB_TABLES_SECTION_XPATH)
+
+    @log_decorator
+    def add_new_record_2_web_table(self, web_table):
+        """Fill default values to Web Tables Registration Form"""
+        self.click(self.constants.ADD_NEW_RECORD_BUTTON_XPATH)
+        self.fill_field(xpath=self.constants.FIRST_NAME_FIELD_XPATH, value=web_table.first_name)
+        self.fill_field(xpath=self.constants.LAST_NAME_FIELD_XPATH, value=web_table.last_name)
+        self.fill_field(xpath=self.constants.EMAIL_FIELD_XPATH, value=web_table.email)
+        self.fill_field(xpath=self.constants.AGE_FIELD_XPATH, value=web_table.age)
+        self.fill_field(xpath=self.constants.SALARY_FIELD_XPATH, value=web_table.salary)
+        self.fill_field(xpath=self.constants.DEPARTMENT_FIELD_XPATH, value=web_table.department)
+        self.click(self.constants.SUBMIT_BUTTON_XPATH)
+
+    @log_decorator
+    def verify_web_table_record_added(self, filled_text):
+        """Verify new record into Web Tables table"""
+        assert filled_text in \
+               self.get_element_text(xpath=self.constants.WEB_TABLE_XPATH.format(output_text=filled_text))
+        return StartPage(self.driver)

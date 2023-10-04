@@ -1,6 +1,6 @@
 import logging
 
-from pages.utils import TextBox
+from pages.utils import TextBox, WebTable
 
 log = logging.getLogger(__name__)
 
@@ -12,7 +12,7 @@ class TestStartPage:
         start_page.fill_email()
         start_page.verify_email_field_validation()
 
-    def test_text_box_and_submit(self, start_page):
+    def test_fill_text_box_and_submit(self, start_page):
         start_page.open_text_box_section()
         text_box = TextBox()
         text_box.fill_default()
@@ -37,3 +37,10 @@ class TestStartPage:
     def test_verify_button_disabled(self, start_page):
         start_page.open_radio_button_section()
         start_page.verify_no_radio_button_disabled()
+
+    def test_add_new_record_2_web_table(self, start_page):
+        start_page.open_web_tables_section()
+        web_table = WebTable()
+        web_table.fill_default()
+        start_page.add_new_record_2_web_table(web_table)
+        start_page.verify_web_table_record_added(web_table.department)
