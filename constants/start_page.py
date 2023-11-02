@@ -63,3 +63,4 @@ class StartPageConsts:
     SALARY_FIELD_XPATH = './/input[@id="salary"]'
     DEPARTMENT_FIELD_XPATH = './/input[@id="department"]'
     WEB_TABLE_XPATH = './/div[@class="rt-tbody"]'
+    SEARCH_INPUT_FIELD_XPATH = './/input[@id="searchBox"]'

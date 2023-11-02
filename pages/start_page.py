@@ -132,3 +132,8 @@ class StartPage(BasePage):
         assert filled_text in \
                self.get_element_text(xpath=self.constants.WEB_TABLE_XPATH.format(output_text=filled_text))
         return StartPage(self.driver)
+
+    @log_decorator
+    def search_in_web_table(self):
+        """Search in the Web Tables"""
+        self.click(self.constants.SEARCH_INPUT_FIELD_XPATH)
