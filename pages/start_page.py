@@ -115,7 +115,7 @@ class StartPage(BasePage):
         self.click(xpath=self.constants.WEB_TABLES_SECTION_XPATH)
 
     @log_decorator
-    def add_new_record_2_web_table(self, web_table):
+    def add_random_2_web_table(self, web_table):
         """Fill default values to Web Tables Registration Form"""
         self.click(self.constants.ADD_NEW_RECORD_BUTTON_XPATH)
         self.fill_field(xpath=self.constants.FIRST_NAME_FIELD_XPATH, value=web_table.first_name)
@@ -127,6 +127,18 @@ class StartPage(BasePage):
         self.click(self.constants.SUBMIT_BUTTON_XPATH)
 
     @log_decorator
+    def add_constant_record_2_web_table(self, web_table):
+        """Fill default values to Web Tables Registration Form"""
+        self.click(self.constants.ADD_NEW_RECORD_BUTTON_XPATH)
+        self.fill_field(xpath=self.constants.FIRST_NAME_FIELD_XPATH, value=web_table['first_name'])
+        self.fill_field(xpath=self.constants.LAST_NAME_FIELD_XPATH, value=web_table['last_name'])
+        self.fill_field(xpath=self.constants.EMAIL_FIELD_XPATH, value=web_table['email'])
+        self.fill_field(xpath=self.constants.AGE_FIELD_XPATH, value=web_table['age'])
+        self.fill_field(xpath=self.constants.SALARY_FIELD_XPATH, value=web_table['salary'])
+        self.fill_field(xpath=self.constants.DEPARTMENT_FIELD_XPATH, value=web_table['department'])
+        self.click(self.constants.SUBMIT_BUTTON_XPATH)
+
+    @log_decorator
     def verify_web_table_record_added(self, filled_text):
         """Verify new record into Web Tables table"""
         assert filled_text in \
@@ -134,6 +146,14 @@ class StartPage(BasePage):
         return StartPage(self.driver)
 
     @log_decorator
-    def search_in_web_table(self):
+    def search_in_web_table(self, first_name):
         """Search in the Web Tables"""
         self.click(self.constants.SEARCH_INPUT_FIELD_XPATH)
+        self.fill_field(self.constants.SEARCH_INPUT_FIELD_XPATH, value=first_name)
+
+    @log_decorator
+    def verify_successful_search(self, filled_text):
+        """Verify that previously added record exists in the table"""
+        assert filled_text in \
+               self.get_element_text(xpath=self.constants.WEB_TABLE_XPATH.format(output_text=filled_text))
+        return StartPage(self.driver)

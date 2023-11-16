@@ -27,3 +27,11 @@ def elements_page():
     driver.implicitly_wait(1.5)
     yield StartPage(driver)
     driver.close()
+
+
+@pytest.fixture()
+def web_table_record():
+    record = {'first_name': 'John', 'last_name': 'Doe', 'email': 'john@doe.com', 'age': 33, 'salary': 1408,
+              'department': 'Avengers'}
+    #   first_name = record['first_name']
+    return record

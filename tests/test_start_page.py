@@ -42,5 +42,11 @@ class TestStartPage:
         start_page.open_web_tables_section()
         web_table = WebTable()
         web_table.fill_default()
-        start_page.add_new_record_2_web_table(web_table)
+        start_page.add_random_2_web_table(web_table)
         start_page.verify_web_table_record_added(web_table.department)
+
+    def test_search_added_record_in_web_table(self, start_page, web_table_record):
+        start_page.open_web_tables_section()
+        start_page.add_constant_record_2_web_table(web_table_record)
+        start_page.search_in_web_table(web_table_record['first_name'])
+        start_page.verify_successful_search(web_table_record['first_name'])
